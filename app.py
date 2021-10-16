@@ -1,9 +1,12 @@
 from random import randrange
 from flask import Flask, jsonify, request
 import json
+from time import strftime
+import logging
 
 def createApp():
     app = Flask(__name__)
+    logging.basicConfig(filename='test.log', level=logging.INFO)
     return app
 
 app = createApp()
@@ -57,6 +60,12 @@ def submit_score():
     # TODO SANITIZE THE DATA
     output = update_leaderboard({"name": name, "points": points})
     return jsonify(output)
+
+@app.after_request
+def after_request(response):
+     timestamp = strftime('[%Y-%m-%d %H:%M]')
+     logging.info('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
+     return response
 
 if __name__ == "__main__":  # Makes sure this is the main process
 	app.run( # Starts the site
