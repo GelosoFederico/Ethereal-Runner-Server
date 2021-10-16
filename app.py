@@ -1,7 +1,12 @@
+from random import randrange
 from flask import Flask, jsonify, request
 import json
 
-app = Flask(__name__)
+def createApp():
+    app = Flask(__name__)
+    return app
+
+app = createApp()
 
 def get_players_leaderboard() -> dict:
     with open("leaderboard.json") as json_file:
@@ -52,3 +57,9 @@ def submit_score():
     # TODO SANITIZE THE DATA
     output = update_leaderboard({"name": name, "points": points})
     return jsonify(output)
+
+if __name__ == "__main__":  # Makes sure this is the main process
+	app.run( # Starts the site
+		host='0.0.0.0',  # EStablishes the host, required for repl to detect the site
+		port=3000
+	)
