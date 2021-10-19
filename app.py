@@ -1,8 +1,11 @@
 from random import randrange
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import json
 from time import strftime
 import logging
+
+from flask_cors.decorator import cross_origin
 
 def createApp():
     app = Flask(__name__)
@@ -10,6 +13,7 @@ def createApp():
     return app
 
 app = createApp()
+CORS(app)
 
 def get_players_leaderboard() -> dict:
     with open("leaderboard.json") as json_file:
@@ -47,6 +51,7 @@ def hello_world():
     return "It works"
 
 @app.route("/leaderboard", methods=['GET'])
+@cross_origin(origin='localhost:8080',headers=['Content- Type','Authorization'])
 def leaderboard():
     leaderboard = get_players_leaderboard()
     return jsonify(leaderboard)
