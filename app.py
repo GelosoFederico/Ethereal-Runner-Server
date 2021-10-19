@@ -51,7 +51,6 @@ def hello_world():
     return "It works"
 
 @app.route("/leaderboard", methods=['GET'])
-@cross_origin(origin='localhost:8080',headers=['Content- Type','Authorization'])
 def leaderboard():
     leaderboard = get_players_leaderboard()
     return jsonify(leaderboard)
