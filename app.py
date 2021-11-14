@@ -57,6 +57,9 @@ def leaderboard():
 
 @app.route("/submit_score", methods=['POST'])
 def submit_score():
+    user_agent = request.user_agent.string.split('/')[0]
+    if user_agent != 'EtherealRunner':
+        return jsonify({'status': 'error', 'reason': 'You are not allowed to submit scores.'})
     name = request.json.get('name')
     points = request.json.get('points')
     time = request.json.get('time')
