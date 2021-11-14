@@ -1,42 +1,52 @@
 {
     "0": {
         "name": "Santos",
-        "points": 20000
+        "points": 20000,
+        "time": 1200
     },
     "1": {
         "name": "Ravenna",
-        "points": 15000
+        "points": 15000,
+        "time": 1080
     },
     "2": {
         "name": "Medina",
-        "points": 8000
+        "points": 8000,
+        "time": 960
     },
     "3": {
         "name": "Lamponne",
-        "points": 7000
+        "points": 7000,
+        "time": 840
     },
     "4": {
         "name": "Aguante Malon",
-        "points": 6000
+        "points": 6000,
+        "time": 720
     },
     "5": {
         "name": "Lince taringuero",
-        "points": 5000
+        "points": 5000,
+        "time": 600
     },
     "6": {
         "name": "15 pesos",
-        "points": 4000
+        "points": 4000,
+        "time": 480
     },
     "7": {
         "name": "Gelokpo",
-        "points": 3000
+        "points": 3000,
+        "time": 420
     },
     "8": {
         "name": "Atiendo boludos",
-        "points": 2000
+        "points": 2000,
+        "time": 360
     },
     "9": {
         "name": "Bokita el mas grande",
-        "points": 1000
+        "points": 1000,
+        "time": 300
     }
 }

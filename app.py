@@ -20,7 +20,7 @@ def get_players_leaderboard() -> dict:
         data = json.load(json_file)
     return data
 
-def update_leaderboard(game) -> dict:
+def update_leaderboard(game: dict) -> dict:
     leaderboard = get_players_leaderboard()
     players_list = []
     new_leaderboard = {}
@@ -59,10 +59,15 @@ def leaderboard():
 def submit_score():
     name = request.json.get('name')
     points = request.json.get('points')
+    time = request.json.get('time')
     if not name or not points:
         return jsonify({"status": "error", "reason":"No name or points"})
     # TODO SANITIZE THE DATA
-    output = update_leaderboard({"name": name, "points": points})
+    output = update_leaderboard({
+        "name": name, 
+        "points": points,
+        "time": time
+    })
     return jsonify(output)
 
 @app.after_request
